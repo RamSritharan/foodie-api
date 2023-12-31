@@ -1,13 +1,11 @@
 const Review = require("../models/reviews");
-const Restaurant = require("../models/restaurant");
-import { v4 as uuivd4 } from "uuid";
+const Restaurant = require("../models/restaurants");
 
 //Post request -> To post a review to the specified restaurant
 
 async function reviewPost(req, res) {
   try {
     let review = await Review.create({
-      reviewID: uuivd4(),
       restaurantID: req.body.restID,
       reviewerName: req.body.name,
       reviewRating: req.body.rating,
@@ -19,6 +17,7 @@ async function reviewPost(req, res) {
 
     console.log(review);
     res.status(200).json("ok review logged");
+    s;
   } catch (err) {
     res.status(400).json(err);
   }

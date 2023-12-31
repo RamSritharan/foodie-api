@@ -20,6 +20,8 @@ app.use(express.static(path.join(__dirname, "build")));
 
 app.get("/restaurants", require("./routes/api/index.js"));
 app.post("/restaurantPost", require("./routes/api/index.js"));
+app.get("/restaurants/:id", require("./routes/api/review.js"));
+app.post("/restaurant/:id/post/", require("./routes/api/review.js"));
 
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "public", "index.html"));

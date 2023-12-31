@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const restCtrl = require("../../controllers/reviewCont");
+const revCtrl = require("../../controllers/reviewCont.js");
 
-router.use("/restaurants/:id/", restCtrl.restIndex);
-router.use("/restaurantPost/:id/review", restCtrl.createRest);
+router.use("/restaurants/:id/", revCtrl.restaurantHome);
+router.use("/restaurants/:id/post/", revCtrl.reviewPost);
 
 module.exports = router;
