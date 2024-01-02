@@ -10,6 +10,8 @@ async function restIndex(req, res) {
   }
 }
 
+//Get request to view a specific restaurant
+
 //Post request to post restuarants
 async function createRest(req, res) {
   try {
