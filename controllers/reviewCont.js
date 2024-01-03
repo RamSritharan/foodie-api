@@ -27,10 +27,15 @@ async function reviewPost(req, res) {
 //get request for restaurant and reviews
 async function restaurantHome(req, res) {
   try {
-    const restaurant = Restaurant.findbyID(req.params.id).populate("reviews");
-    restaurant.exec((err, restaurant) => {
-      return res.status(200).json(restaurant);
-    });
+    let restaurant = await Restaurant.findById(req.body.id)
+      .lean()
+      .populate("restaurantReviews")
+      .exec();
+
+    let reviews = await Review.find(restaurant.restaurantReviews);
+
+    console.log(reviews);
+    res.status(200).json(restaurant, reviews);
   } catch (err) {
     res.status(400).json(err);
   }
