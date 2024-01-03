@@ -4,23 +4,24 @@ const Restaurant = require("../models/restaurants");
 //Post request -> To post a review to the specified restaurant
 
 async function reviewPost(req, res) {
-  console.log(req.body);
-  // try {
-  let restaurant = Restaurant.findbyID(req.body.id);
+  try {
+    let review = await Review.create({
+      restaurantID: req.body.id,
+      reviewerName: req.body.name,
+      reviewRating: req.body.rating,
+      reviewBubble: req.body.bubble,
+    });
 
-  let review = await Review.create({
-    restaurantID: req.body.id,
-    reviewerName: req.body.name,
-    reviewRating: req.body.rating,
-    reviewBubble: req.body.bubble,
-  });
+    let restaurant = await Restaurant.findById(req.body.id).exec();
+    let newReview = await restaurant.restaurantReviews.push(review);
+    restaurant.save();
 
-  restaurant.restaurantReviews.unshift(review);
+    console.log("newReview", restaurant.restaurantReviews);
 
-  res.status(200).json("ok review logged");
-  // } catch (err) {
-  //   res.status(400).json(err);
-  // }
+    res.status(200).json("Success");
+  } catch (err) {
+    res.status(400).json(err);
+  }
 }
 
 //get request for restaurant and reviews
