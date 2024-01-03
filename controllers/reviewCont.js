@@ -28,14 +28,10 @@ async function reviewPost(req, res) {
 async function restaurantHome(req, res) {
   try {
     let restaurant = await Restaurant.findById(req.body.id)
-      .lean()
       .populate("restaurantReviews")
       .exec();
 
-    let reviews = await Review.find(restaurant.restaurantReviews);
-
-    console.log(reviews);
-    res.status(200).json(restaurant, reviews);
+    res.status(200).json(restaurant);
   } catch (err) {
     res.status(400).json(err);
   }
