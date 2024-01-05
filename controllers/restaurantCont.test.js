@@ -6,6 +6,5 @@ describe("GET /restaurants", () => {
   it("it should return all restaurants", async () => {
     const res = await request(app).get("/restaurants");
     expect(res.statusCode).toBe(200);
-    done();
   });
 });

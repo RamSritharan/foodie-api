@@ -8,10 +8,8 @@ require("./config/database.js");
 
 const app = express();
 
-var port = "3000";
+var port = "5400";
 app.set("port", port);
-
-//module.exports = app;
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -28,6 +26,10 @@ app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
+module.exports = app;
+
 const server = app.listen(port, () => {
   console.log(`server is running on port: ${port}`);
 });
+
+module.exports = server;
