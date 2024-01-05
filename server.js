@@ -8,8 +8,7 @@ require("./config/database.js");
 
 const app = express();
 
-var port = "5400";
-app.set("port", port);
+var port = "3000";
 
 app.use(logger("dev"));
 app.use(express.json());
