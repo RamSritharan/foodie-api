@@ -16,6 +16,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "build")));
 
 app.get("/restaurants", require("./routes/api/index.js"));
+app.get("/restaurant/:id", require("./routes/api/index.js"));
 app.post("/restaurantPost", require("./routes/api/index.js"));
 
 app.get("/restaurant/:id/home/", require("./routes/api/review.js"));

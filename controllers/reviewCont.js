@@ -18,7 +18,7 @@ async function reviewPost(req, res) {
 
     console.log("newReview", restaurant.restaurantReviews);
 
-    res.status(200).json("Success");
+    res.status(201).json("Success");
   } catch (err) {
     res.status(400).json(err);
   }
