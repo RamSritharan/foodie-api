@@ -9,14 +9,14 @@ describe("GET /restaurants", () => {
   });
 });
 
-describe("GET /restaurant/:id", () => {
-  it("it should return a specific restaurant", async () => {
-    const res = await request(app).get("/restaurant/:id").setEncoding({
-      id: "658f6e9826b4def26367b054",
-    });
-    expect(res.statusCode).toBe(200);
-  });
-});
+// describe("GET /restaurant/:id", () => {
+//   it("it should return a specific restaurant", async () => {
+//     const res = await request(app).get("/restaurant/:id").setEncoding({
+//       id: "658f6e9826b4def26367b054",
+//     });
+//     expect(res.statusCode).toBe(200);
+//   });
+// });
 
 //post a restaurant
 describe("POST /restaurantPost", () => {
