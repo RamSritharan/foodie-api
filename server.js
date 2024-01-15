@@ -8,7 +8,7 @@ require("./config/database.js");
 
 const app = express();
 
-var port = "3000";
+var port = process.env.PORT;
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -29,7 +29,7 @@ app.get("/*", function (req, res) {
 module.exports = app;
 
 const server = app.listen(port, () => {
-  console.log(`server is running on port: ${port}`);
+  console.log(`server is running on port: ${process.env.PORT}`);
 });
 
 module.exports = server;
